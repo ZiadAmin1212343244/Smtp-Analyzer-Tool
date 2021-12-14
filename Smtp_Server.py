@@ -6,15 +6,15 @@ from socket import AF_INET, SOCK_STREAM, socket
 
 print('Server started')
 s = socket(AF_INET, SOCK_STREAM)
-print('TCP Socket created')
-
+print('TCP Socket created') # this means that the server started 
+# here we write the device ip address 
 print('Server Is bound to IP:', server_ip)
 
 #s.bind(('127.0.0.1', 7779))
-s.bind((server_ip, 7779))
+s.bind((server_ip, 7779)) #here we identify specific ip address and port address to establish the connection with the client
 
 backlog = 0
-s.listen(backlog)
+s.listen(backlog) # here the server start listening and waiting for the connection
 client_socket,client_addr = s.accept()
 print('New client connected from %s:%d' % client_addr)
 
@@ -51,14 +51,14 @@ client_socket.sendall('250'.encode())
 
 
 #Extracting Data
-mail_from = mail_from.decode('UTF-8')
-mail_to = mail_to.decode('UTF-8')
+mail_from = mail_from.decode('UTF-8') # the sender email that the user entered as input in the client side
+mail_to = mail_to.decode('UTF-8') # the receiver email that the user entered as input in the server side
 
 EMail = 'Email FROM <{}>: \nEmail TO <{}>: \nMessage: {}'.format(mail_from,mail_to,data_line)
 Client_IP = client_ip
 Client_Port = client_addr[1]
 from scapy.all import *
-Client_MAC = getmacbyip(client_ip)
+Client_MAC = getmacbyip(client_ip) # this how we extract the mac address
 
 print('\n\n')
 print('EMail')
