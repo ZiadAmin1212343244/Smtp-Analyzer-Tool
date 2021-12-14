@@ -1,14 +1,16 @@
 from socket import AF_INET, SOCK_STREAM, socket
 
+#first, we are going to create the socket
 print('Client started')
 s = socket(AF_INET, SOCK_STREAM)
 
-
+# we are going to identify the ip address and the port address to connect with the server address  
 server_address = (('192.168.189.1',7779))
 s.connect(server_address)
 
 
 #------------------------------------------------------------------------------------#
+# here is the messages that we want to send and receive between the server and the client 
 message = 'HELO'
 s.sendall(message.encode())
 
