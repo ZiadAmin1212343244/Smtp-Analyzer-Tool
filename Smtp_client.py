@@ -17,14 +17,14 @@ s.sendall(message.encode())
 reply = s.recv(1024)
 if reply == '250'.encode():
     print('SERVER :',reply)
-    email_from = input('Your Email: ')
+    email_from = input('Your Email: ') #here is the mail that the user enter
     s.sendall(email_from.encode())
 
     mail_from_acceptance = s.recv(1024)
     if mail_from_acceptance == '250'.encode():
         print('SERVER :',mail_from_acceptance)
 
-        mail_to = input('Reciever Email: ')
+        mail_to = input('Reciever Email: ') #the user enter here the receiver mail
         s.sendall(mail_to.encode())
         mail_to_acceptance = s.recv(1024)
         if mail_to_acceptance == '250'.encode():
@@ -39,7 +39,7 @@ if reply == '250'.encode():
 
                 #Sending data line by line until you send (.)
                 
-data_line = input('Enter line of data to send: ')
+data_line = input('Enter line of data to send: ') # the message that the user want to send to the server 
 s.sendall(data_line.encode())
 
 
